@@ -1,4 +1,9 @@
-# button-creator
+# Cadastro de Funcionários
+
+## Prototype
+```
+https://www.figma.com/proto/QGfS12tmW6w3qfEfM5QSAM/Cadastro-de-Funcion%C3%A1rios?node-id=0%3A1
+```
 
 ## Project setup
 ```
