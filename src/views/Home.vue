@@ -3,17 +3,17 @@
     <div class="home">
       <div class="header">
         <div class="header-title">
-          <img src="icon-users.svg" alt="pesquisar">
+          <img src="icon-users.svg" alt="pesquisar" />
           <h1>Lista de Funcionários</h1>
         </div>
         <button>
-          <img src="icons-plus.svg" alt="pesquisar">
+          <img src="icons-plus.svg" alt="pesquisar" />
           Adicionar
         </button>
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Buscar funcionários...">
-        <img src="icon-search.svg" alt="pesquisar">
+        <input type="text" placeholder="Buscar funcionários..." />
+        <img src="icon-search.svg" alt="pesquisar" />
       </div>
       <Card
         :funcionario="funcionario"
@@ -64,7 +64,7 @@ export default {
 }
 
 .search-bar input:focus .search-bar {
-  outline: #04E1AC solid 3px;
+  outline: #04e1ac solid 3px;
   border-radius: 4px;
   background: #fff;
 }
@@ -76,18 +76,20 @@ button {
   gap: 8px;
   width: 150px;
   height: 40px;
-  background: #04E1AC;
+  background: #04e1ac;
   border: none;
   border-radius: 4px;
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color .15s ease-out;
+  transition: background-color 0.15s ease-out;
 }
 
-button:hover {
-  background-color: #03ECB4;
+@media (min-width: 600px) {
+  button:hover {
+    background-color: #03ecb4;
+  }
 }
 
 .header-title {
@@ -96,8 +98,15 @@ button:hover {
   gap: 10px;
 }
 
+@media (max-width: 500px) {
+  .header-title img {
+    display: none;
+  }
+}
+
 h1 {
   font-size: 1.5rem;
   line-height: 1.8rem;
 }
-</style>>
+</style>
+>
