@@ -20,13 +20,14 @@ export default {
 .card-container {
   background-color: #fff;
   height: 80px;
-  width: 700px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 0;
   padding: 20px 30px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .card-container:hover {

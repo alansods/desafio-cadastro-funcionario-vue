@@ -5,36 +5,10 @@
 </template>
 
 <script>
-
 export default {
-  components: {  },
+  components: {},
   data() {
-    return {
-      funcionarios: [
-        {
-          id: 1,
-          codigo: "00021",
-          nome: "Alan Santos",
-          cpf: "034.836.826-51",
-          rg: "043.365.273-56",
-          data_de_nascimento: "14/12/1990",
-          telefone: "85 9 3223-0234",
-          celular: "85 9 8353-0268",
-          cargo: "Desenvolvedor Front-End",
-        },
-        {
-          id: 2,
-          codigo: "00022",
-          nome: "Bruno Souza",
-          cpf: "324.545.543-43",
-          rg: "043.365.273-56",
-          data_de_nascimento: "14/12/1994",
-          telefone: "11 9 3235-4325",
-          celular: "11 9 6534-8745",
-          cargo: "Web Designer",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>
@@ -48,7 +22,8 @@ export default {
 
 body {
   background-color: #eee;
-  font-family: 'Poppins', sans-serif;  width: 100%;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +33,13 @@ body {
 }
 
 #app {
-  width: 760px;
+  width: 700px;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  #app {
+    width: 90vw;
+  }
 }
 </style>
