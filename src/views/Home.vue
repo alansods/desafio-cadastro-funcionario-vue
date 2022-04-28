@@ -61,6 +61,7 @@ export default {
 
 .search-bar input::placeholder {
   color: #bbb;
+  font-size: 1rem;
 }
 
 .search-bar input:focus .search-bar {
