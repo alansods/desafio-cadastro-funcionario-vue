@@ -1,26 +1,24 @@
 <template>
-  <div id="app">
-    <div class="home">
-      <div class="header">
-        <div class="header-title">
-          <img src="icon-users.svg" alt="pesquisar" />
-          <h1>Lista de Funcionários</h1>
-        </div>
-        <button>
-          <img src="icons-plus.svg" alt="pesquisar" />
-          Adicionar
-        </button>
+  <div class="home">
+    <div class="header">
+      <div class="header-title">
+        <img src="icon-users.svg" alt="pesquisar" />
+        <h1>Lista de Funcionários</h1>
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar funcionários..." />
-        <img src="icon-search.svg" alt="pesquisar" />
-      </div>
-      <Card
-        :funcionario="funcionario"
-        v-for="funcionario in $store.state.funcionarios"
-        :key="funcionario.id"
-      />
+      <button @click="handleAddEmployee">
+        <img src="icons-plus.svg" alt="pesquisar" />
+        Adicionar
+      </button>
     </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar funcionários..." />
+      <img src="icon-search.svg" alt="pesquisar" />
+    </div>
+    <Card
+      :funcionario="funcionario"
+      v-for="funcionario in $store.state.funcionarios"
+      :key="funcionario.id"
+    />
   </div>
 </template>
 
@@ -30,15 +28,33 @@ import Card from "@/components/Card.vue";
 export default {
   props: ["funcionarios"],
   components: { Card },
+  methods: {
+    handleAddEmployee(){
+      this.$router.push({ path: '/adicionar-funcionario' })
+    }
+  }
 };
 </script>
 
 <style scoped>
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 500px) {
+  .header-title img {
+    display: none;
+  }
 }
 
 .search-bar {
@@ -64,12 +80,6 @@ export default {
   font-size: 1rem;
 }
 
-.search-bar input:focus .search-bar {
-  outline: #04e1ac solid 3px;
-  border-radius: 4px;
-  background: #fff;
-}
-
 button {
   display: flex;
   align-items: center;
@@ -93,21 +103,4 @@ button {
   }
 }
 
-.header-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-@media (max-width: 500px) {
-  .header-title img {
-    display: none;
-  }
-}
-
-h1 {
-  font-size: 1.5rem;
-  line-height: 1.8rem;
-}
 </style>
->
