@@ -28,31 +28,24 @@ export default new Vuex.Store({
         celular: "11 9 6534-8745",
         cargo: "Web Designer",
       },
-      {
-        id: 3,
-        codigo: "00022",
-        nome: "Lucas Silva",
-        cpf: "324.545.543-43",
-        rg: "043.365.273-56",
-        data_de_nascimento: "14/12/1994",
-        telefone: "11 9 3235-4325",
-        celular: "11 9 6534-8745",
-        cargo: "Desenvolvedor Back-End",
-      },
-      {
-        id: 4,
-        codigo: "00022",
-        nome: "Joao Gomes",
-        cpf: "324.545.543-43",
-        rg: "043.365.273-56",
-        data_de_nascimento: "14/12/1994",
-        telefone: "11 9 3235-4325",
-        celular: "11 9 6534-8745",
-        cargo: "Motion Designer",
-      },
     ],
   },
-  mutations: {},
+  mutations: {
+    addNewEmployee(state, novosdados) { 
+      let newEmployee = {
+        id: Date.now(), //gera um número único e diferente.
+        codigo: novosdados.codigo,
+        nome: novosdados.nome,
+        cpf: novosdados.cpf,
+        rg: novosdados.cpf,
+        data_de_nascimento: novosdados.data_de_nascimento,
+        telefone: novosdados.telefone,
+        celular: novosdados.celular,
+        cargo: novosdados.cargo,
+      }
+      state.funcionarios.push(newEmployee);
+    },
+  },
   actions: {},
   modules: {},
 });

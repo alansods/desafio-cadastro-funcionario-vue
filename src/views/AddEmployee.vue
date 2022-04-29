@@ -16,7 +16,13 @@
       <form>
         <div>
           <label for="codigo">Código:</label>
-          <input type="text" id="codigo" name="codigo" placeholder="00000" />
+          <input
+            v-model="novosDados.codigo"
+            type="text"
+            id="codigo"
+            name="codigo"
+            placeholder="00000"
+          />
         </div>
         <div>
           <label for="cpf">CPF:</label>
@@ -25,6 +31,7 @@
         <div>
           <label for="nome">Nome:</label>
           <input
+            v-model="novosDados.nome"
             type="text"
             id="nome"
             name="nome"
@@ -72,7 +79,7 @@
           <select name="uf" v-model="selectedUf">
             <option
               id="ufEstado"
-              v-for="estado in estados"
+              v-for="estado in novosDados.estados"
               :key="estado.id"
             >
               {{ estado.sigla }}
@@ -81,8 +88,11 @@
         </div>
         <div>
           <label for="cidade">Cidade:</label>
-          <select name="uf">
-            <option v-for="cidade in cidades" :key="cidade.id">
+          <select v-if="inativo">
+            <option value=""></option>
+          </select>
+          <select v-else name="uf">
+            <option v-for="cidade in novosDados.cidades" :key="cidade.id">
               {{ cidade.nome }}
             </option>
           </select>
@@ -130,6 +140,7 @@
         <div>
           <label for="cargo">Cargo:</label>
           <input
+            v-model="novosDados.cargo"
             type="text"
             id="cargo"
             name="cargo"
@@ -148,7 +159,7 @@
       </form>
     </div>
 
-    <button class="btn-green">Confirmar</button>
+    <button class="btn-green" @click="handleAddEmployee">Confirmar</button>
     <button class="btn-red" @click="handleGoBack">Cancelar</button>
   </div>
 </template>
@@ -159,13 +170,29 @@ import axios from "axios";
 export default {
   data() {
     return {
-      estados: [],
-      cidades: [],
       selectedUf: "",
+      inativo: true,
+      novosDados: {
+        id: null,
+        codigo: "",
+        nome: "",
+        cpf: "",
+        rg: "",
+        data_de_nascimento: "",
+        telefone: "",
+        celular: "",
+        cargo: "",
+        estados: [],
+        cidades: [],
+      },
     };
   },
   methods: {
     handleGoBack() {
+      this.$router.push("/");
+    },
+    handleAddEmployee() {
+      this.$store.commit("addNewEmployee", this.novosDados);
       this.$router.push("/");
     },
   },
@@ -175,20 +202,22 @@ export default {
         "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
       )
       .then((response) => {
-        this.estados = response.data;
+        this.novosDados.estados = response.data;
       });
   },
   watch: {
-    selectedUf(){
+    selectedUf() {
+      this.inativo = true;
       axios
-      .get(
-        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUf}/municipios`
-      )
-      .then((response) => {
-        this.cidades = response.data;
-      });''
-    }
-  }
+        .get(
+          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUf}/municipios`
+        )
+        .then((response) => {
+          this.novosDados.cidades = response.data;
+          this.inativo = false;
+        });
+    },
+  },
 };
 </script>
 
@@ -256,7 +285,9 @@ input[type="date"] {
 }
 
 @media (max-width: 600px) {
-  input, select, input[type="date"] {
+  input,
+  select,
+  input[type="date"] {
     width: 100%;
     max-width: 100%;
   }
