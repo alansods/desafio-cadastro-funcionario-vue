@@ -13,95 +13,183 @@
         <h2>Adicionar Funcionário</h2>
       </div>
       <hr />
-      <form action="submit">
+      <form>
         <div>
           <label for="codigo">Código:</label>
-          <input type="text" id="codigo" name="codigo" placeholder="00000"/>
+          <input type="text" id="codigo" name="codigo" placeholder="00000" />
         </div>
         <div>
           <label for="cpf">CPF:</label>
-          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00"/>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" />
         </div>
         <div>
           <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo"/>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite seu nome completo"
+          />
         </div>
         <div>
           <label for="rg">RG:</label>
-          <input type="text" id="rg" name="rg" placeholder="00.000.000-0"/>
+          <input type="text" id="rg" name="rg" placeholder="00.000.000-0" />
         </div>
         <div>
           <label for="date">Data de Nascimento:</label>
-          <input type="date" id="date" name="date"/>
+          <input type="date" id="date" name="date" />
         </div>
         <div>
           <label for="telefone">Telefone:</label>
-          <input type="tel" id="telefone" name="telefone" placeholder="(00)00000-0000" required/>
+          <input
+            type="tel"
+            id="telefone"
+            name="telefone"
+            placeholder="(00)00000-0000"
+            required
+          />
         </div>
         <div>
           <label for="celular">Celular:</label>
-          <input type="text" id="celular" name="celular" placeholder="(00)00000-0000"/>
+          <input
+            type="text"
+            id="celular"
+            name="celular"
+            placeholder="(00)00000-0000"
+          />
         </div>
         <div>
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="seuemail@email.com"/>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seuemail@email.com"
+          />
         </div>
         <div>
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço"/>
-        </div>
-        <div>
-          <label for="numero">Número:</label>
-          <input type="text" id="numero" name="numero" placeholder="Digite o número"/>
-        </div>
-        <div>
-          <label for="complemento">Complemento:</label>
-          <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento"/>
-        </div>
-        <div>
-          <label for="bairro">Bairro:</label>
-          <input type="text" id="bairro" name="bairro" placeholder="Digite seu bairro"/>
+          <label for="uf">UF:</label>
+          <select name="uf" v-model="selectedUf">
+            <option
+              id="ufEstado"
+              v-for="estado in estados"
+              :key="estado.id"
+            >
+              {{ estado.sigla }}
+            </option>
+          </select>
         </div>
         <div>
           <label for="cidade">Cidade:</label>
-          <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade"/>
+          <select name="uf">
+            <option v-for="cidade in cidades" :key="cidade.id">
+              {{ cidade.nome }}
+            </option>
+          </select>
         </div>
         <div>
           <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" placeholder="00.000-000"/>
+          <input type="text" id="cep" name="cep" placeholder="00.000-000" />
+        </div>
+        <div>
+          <label for="endereco">Endereço:</label>
+          <input
+            type="text"
+            id="endereco"
+            name="endereco"
+            placeholder="Digite seu endereço"
+          />
+        </div>
+        <div>
+          <label for="numero">Número:</label>
+          <input
+            type="text"
+            id="numero"
+            name="numero"
+            placeholder="Digite o número"
+          />
+        </div>
+        <div>
+          <label for="complemento">Complemento:</label>
+          <input
+            type="text"
+            id="complemento"
+            name="complemento"
+            placeholder="Digite o complemento"
+          />
+        </div>
+        <div>
+          <label for="bairro">Bairro:</label>
+          <input
+            type="text"
+            id="bairro"
+            name="bairro"
+            placeholder="Digite seu bairro"
+          />
         </div>
         <div>
           <label for="cargo">Cargo:</label>
-          <input type="text" id="cargo" name="cargo" placeholder="Digite seu cargo"/>
+          <input
+            type="text"
+            id="cargo"
+            name="cargo"
+            placeholder="Digite seu cargo"
+          />
         </div>
         <div>
           <label for="salario">Salário:</label>
-          <input type="text" id="salario" name="salario" placeholder="R$0.000,00"/>
+          <input
+            type="text"
+            id="salario"
+            name="salario"
+            placeholder="R$0.000,00"
+          />
         </div>
       </form>
     </div>
 
-    <button class="btn-green" @click="submit">Confirmar</button>
+    <button class="btn-green">Confirmar</button>
     <button class="btn-red" @click="handleGoBack">Cancelar</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       estados: [],
-    }
+      cidades: [],
+      selectedUf: "",
+    };
   },
   methods: {
     handleGoBack() {
-      this.$router.push({ path: "/" });
+      this.$router.push("/");
     },
   },
   mounted() {
-
+    axios
+      .get(
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
+      )
+      .then((response) => {
+        this.estados = response.data;
+      });
+  },
+  watch: {
+    selectedUf(){
+      axios
+      .get(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUf}/municipios`
+      )
+      .then((response) => {
+        this.cidades = response.data;
+      });''
+    }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -149,13 +237,26 @@ input {
   max-width: 235px;
 }
 
-input[type=date] {
-  color: #bbb;
-  font-size: .85rem;
+select {
+  color: #333;
+  font-size: 0.85rem;
+  height: 36px;
+  background-color: #ddd;
+  padding: 0 15px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  max-width: 235px;
+}
+
+input[type="date"] {
+  color: #333;
+  font-size: 0.85rem;
+  max-width: 235px;
 }
 
 @media (max-width: 600px) {
-  input {
+  input, select, input[type="date"] {
     width: 100%;
     max-width: 100%;
   }
@@ -163,7 +264,7 @@ input[type=date] {
 
 input::placeholder {
   color: #bbb;
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .btn-back {
@@ -189,7 +290,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
-  padding: 40px 84px;
+  padding: 40px 50px;
   border-radius: 4px;
 }
 
@@ -223,7 +324,7 @@ input::placeholder {
   gap: 8px;
   width: 100%;
   height: 40px;
-  background: #E10439;
+  background: #e10439;
   border: none;
   border-radius: 4px;
   color: #fff;
@@ -239,9 +340,7 @@ input::placeholder {
     background-color: #03ecb4;
   }
   .btn-red:hover {
-    background-color: #F03C67;
+    background-color: #f03c67;
   }
 }
-
-
 </style>

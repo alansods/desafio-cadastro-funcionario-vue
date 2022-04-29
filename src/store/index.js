@@ -29,7 +29,7 @@ export default new Vuex.Store({
         cargo: "Web Designer",
       },
       {
-        id: 2,
+        id: 3,
         codigo: "00022",
         nome: "Lucas Silva",
         cpf: "324.545.543-43",
