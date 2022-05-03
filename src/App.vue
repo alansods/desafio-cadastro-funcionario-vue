@@ -38,6 +38,18 @@ body {
 h1 {
   font-size: 1.5rem;
   line-height: 1.8rem;
+  font-weight: 700;
+}
+
+.btn-back {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 #app {

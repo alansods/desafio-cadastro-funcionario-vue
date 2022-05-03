@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import AddEmployee from "../views/AddEmployee.vue";
+import Employee from "../views/Employee.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/adicionar-funcionario",
     name: "AddEmployee",
     component: AddEmployee,
+  },
+  {
+    path: "/funcionario/:index",
+    name: "Employee",
+    component: Employee,
   },
 ];
 

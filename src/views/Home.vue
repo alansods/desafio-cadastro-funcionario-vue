@@ -14,10 +14,16 @@
       <input type="text" placeholder="Buscar funcionários..." />
       <img src="icon-search.svg" alt="pesquisar" />
     </div>
+    <div v-if="$store.state.funcionarios.length === 0" class="no-employees">
+      <img src="no-employee.svg" alt="sem-funcionarios" />
+      <p>Nenhum funcionário cadastrado</p>
+    </div>
     <Card
-      :funcionario="funcionario"
-      v-for="funcionario in $store.state.funcionarios"
+      v-else
+      v-for="(funcionario, index) in $store.state.funcionarios"
       :key="funcionario.id"
+      :funcionario="funcionario"
+      :index="index"
     />
   </div>
 </template>
@@ -29,15 +35,14 @@ export default {
   props: ["funcionarios"],
   components: { Card },
   methods: {
-    handleAddEmployee(){
-      this.$router.push({ path: '/adicionar-funcionario' })
-    }
-  }
+    handleAddEmployee() {
+      this.$router.push({ path: "/adicionar-funcionario" });
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -103,4 +108,14 @@ button {
   }
 }
 
+.no-employees {
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 30px;
+}
+
+.no-employees p {
+  margin-top: 30px;
+}
 </style>

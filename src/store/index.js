@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    index: 1,
     funcionarios: [
       {
         id: 1,
@@ -18,6 +19,7 @@ export default new Vuex.Store({
         cargo: "Desenvolvedor Front-End",
       },
       {
+        index: 1,
         id: 2,
         codigo: "00022",
         nome: "Bruno Souza",
@@ -31,19 +33,33 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
-    addNewEmployee(state, novosdados) { 
+    addNewEmployee(state, novosdados) {
       let newEmployee = {
         id: Date.now(), //gera um número único e diferente.
         codigo: novosdados.codigo,
-        nome: novosdados.nome,
         cpf: novosdados.cpf,
+        nome: novosdados.nome,
         rg: novosdados.cpf,
         data_de_nascimento: novosdados.data_de_nascimento,
         telefone: novosdados.telefone,
         celular: novosdados.celular,
+        email: novosdados.email,
+        uf: novosdados.uf,
+        cidade: novosdados.cidade,
+        cep:novosdados.cep,
+        endereco: novosdados.endereco,
+        numero: novosdados.numero,
+        complemento: novosdados.complemento,
+        bairro: novosdados.bairro,
         cargo: novosdados.cargo,
+        salario: novosdados.salario,
       }
       state.funcionarios.push(newEmployee);
+    },
+    removeEmployee(state, id) {
+      state.funcionarios = state.funcionarios.filter((funcionario) => {
+        return funcionario.id !== id;
+      });
     },
   },
   actions: {},

@@ -3,195 +3,103 @@
     <div class="header">
       <button class="btn-back" @click="handleGoBack">
         <img src="icon-back.svg" alt="voltar" />
-        <h1>Voltar</h1>
+        Voltar
       </button>
+      <div class="btn-container">
+        <button class="btn-edit" @click="handleAddEmployee">
+          <img src="icon-edit.svg" alt="editar" />
+          Editar
+        </button>
+        <button class="btn-delete" @click="handleRemoveEmployee">
+          <img src="icon-trash.svg" alt="deletar" />
+          Deletar
+        </button>
+      </div>
     </div>
 
     <div class="card-container">
       <div class="header-title">
-        <img src="icon-add-users.svg" alt="voltar" />
-        <h2>Adicionar Funcionário</h2>
+        <img src="icon-user.svg" alt="voltar" />
+        <h2>{{ $store.state.funcionarios[$route.params.index].nome }}</h2>
       </div>
       <hr />
       <form>
         <div>
           <label for="codigo">Código:</label>
-          <input
-            v-model="novosDados.codigo"
-            type="text"
-            id="codigo"
-            name="codigo"
-            placeholder="00000"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].codigo }}</p>
         </div>
         <div>
           <label for="cpf">CPF:</label>
-          <input
-            v-model="novosDados.cpf"
-            type="text"
-            id="cpf"
-            name="cpf"
-            placeholder="000.000.000-00"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].cpf }}</p>
         </div>
         <div>
           <label for="nome">Nome:</label>
-          <input
-            v-model="novosDados.nome"
-            type="text"
-            id="nome"
-            name="nome"
-            placeholder="Digite seu nome completo"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].nome }}</p>
         </div>
         <div>
           <label for="rg">RG:</label>
-          <input
-            v-model="novosDados.rg"
-            type="text"
-            id="rg"
-            name="rg"
-            placeholder="00.000.000-0"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].rg }}</p>
         </div>
         <div>
           <label for="date">Data de Nascimento:</label>
-          <input
-            v-model="novosDados.data_de_nascimento"
-            type="date"
-            id="date"
-            name="date"
-          />
+          <p>
+            {{
+              $store.state.funcionarios[$route.params.index].data_de_nascimento
+            }}
+          </p>
         </div>
         <div>
           <label for="telefone">Telefone:</label>
-          <input
-            v-model="novosDados.telefone"
-            type="tel"
-            id="telefone"
-            name="telefone"
-            placeholder="(00)00000-0000"
-            required
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].telefone }}</p>
         </div>
         <div>
           <label for="celular">Celular:</label>
-          <input
-            v-model="novosDados.celular"
-            type="text"
-            id="celular"
-            name="celular"
-            placeholder="(00)00000-0000"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].celular }}</p>
         </div>
         <div>
           <label for="email">E-mail:</label>
-          <input
-            v-model="novosDados.email"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="seuemail@email.com"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].email }}</p>
         </div>
         <div>
           <label for="uf">UF:</label>
-          <select name="uf" v-model="novosDados.uf">
-            <option
-              id="ufEstado"
-              v-for="estado in estados"
-              :key="estado.id"
-            >
-              {{ estado.sigla }}
-            </option>
-          </select>
+          <p>{{ $store.state.funcionarios[$route.params.index].uf }}</p>
         </div>
         <div>
           <label for="cidade">Cidade:</label>
-          <select v-if="inativo">
-            <option value=""></option>
-          </select>
-          <select v-else name="uf" v-model="novosDados.cidade">
-            <option v-for="cidade in cidades" :key="cidade.id">
-              {{ cidade.nome }}
-            </option>
-          </select>
+          <p>{{ $store.state.funcionarios[$route.params.index].cidade }}</p>
         </div>
         <div>
           <label for="cep">CEP:</label>
-          <input
-            v-model="novosDados.cep"
-            type="text"
-            id="cep"
-            name="cep"
-            placeholder="00.000-000"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].cep }}</p>
         </div>
         <div>
           <label for="endereco">Endereço:</label>
-          <input
-            v-model="novosDados.endereco"
-            type="text"
-            id="endereco"
-            name="endereco"
-            placeholder="Digite seu endereço"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].endereco }}</p>
         </div>
         <div>
           <label for="numero">Número:</label>
-          <input
-            v-model="novosDados.numero"
-            type="text"
-            id="numero"
-            name="numero"
-            placeholder="Digite o número"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].numero }}</p>
         </div>
         <div>
           <label for="complemento">Complemento:</label>
-          <input
-            v-model="novosDados.complemento"
-            type="text"
-            id="complemento"
-            name="complemento"
-            placeholder="Digite o complemento"
-          />
+          <p>
+            {{ $store.state.funcionarios[$route.params.index].complemento }}
+          </p>
         </div>
         <div>
           <label for="bairro">Bairro:</label>
-          <input
-            v-model="novosDados.bairro"
-            type="text"
-            id="bairro"
-            name="bairro"
-            placeholder="Digite seu bairro"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].bairro }}</p>
         </div>
         <div>
           <label for="cargo">Cargo:</label>
-          <input
-            v-model="novosDados.cargo"
-            type="text"
-            id="cargo"
-            name="cargo"
-            placeholder="Digite seu cargo"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].cargo }}</p>
         </div>
         <div>
           <label for="salario">Salário:</label>
-          <input
-            v-model="novosDados.salario"
-            type="text"
-            id="salario"
-            name="salario"
-            placeholder="R$0.000,00"
-          />
+          <p>{{ $store.state.funcionarios[$route.params.index].salario }}</p>
         </div>
       </form>
     </div>
-
-    <button class="btn-green" @click="handleAddEmployee">Confirmar</button>
-    <button class="btn-red" @click="handleGoBack">Cancelar</button>
   </div>
 </template>
 
@@ -201,28 +109,20 @@ import axios from "axios";
 export default {
   data() {
     return {
+      selectedUf: "",
       inativo: true,
-      estados: [],
-      cidades: [],
       novosDados: {
         id: null,
         codigo: "",
-        cpf: "",
         nome: "",
+        cpf: "",
         rg: "",
         data_de_nascimento: "",
         telefone: "",
         celular: "",
-        email: "",
-        uf: "",
-        cidade: "",
-        cep:"",
-        endereco: "",
-        numero: "",
-        complemento: "",
-        bairro: "",
         cargo: "",
-        salario: "",
+        estados: [],
+        cidades: [],
       },
     };
   },
@@ -230,8 +130,8 @@ export default {
     handleGoBack() {
       this.$router.push("/");
     },
-    handleAddEmployee() {
-      this.$store.commit("addNewEmployee", this.novosDados);
+    handleRemoveEmployee() {
+      this.$store.commit("removeEmployee", this.$store.state.funcionarios[this.$route.params.index].id);
       this.$router.push("/");
     },
   },
@@ -241,18 +141,18 @@ export default {
         "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
       )
       .then((response) => {
-        this.estados = response.data;
+        this.novosDados.estados = response.data;
       });
   },
   watch: {
-    'novosDados.uf'() {
+    selectedUf() {
       this.inativo = true;
       axios
         .get(
-          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.novosDados.uf}/municipios`
+          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUf}/municipios`
         )
         .then((response) => {
-          this.cidades = response.data;
+          this.novosDados.cidades = response.data;
           this.inativo = false;
         });
     },
@@ -262,6 +162,9 @@ export default {
 
 <style scoped>
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -337,6 +240,11 @@ input::placeholder {
   font-size: 0.85rem;
 }
 
+.btn-container {
+  display: flex;
+  gap: 12px;
+}
+
 .header-title {
   display: flex;
   align-items: center;
@@ -363,12 +271,12 @@ input::placeholder {
   }
 }
 
-.btn-green {
+.btn-edit {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
+  width: 150px;
   height: 40px;
   background: #04e1ac;
   border: none;
@@ -380,12 +288,12 @@ input::placeholder {
   transition: background-color 0.15s ease-out;
 }
 
-.btn-red {
+.btn-delete {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 100%;
+  width: 150px;
   height: 40px;
   background: #e10439;
   border: none;
@@ -395,14 +303,13 @@ input::placeholder {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease-out;
-  margin-top: 8px;
 }
 
 @media (min-width: 600px) {
-  .btn-green:hover {
+  .btn-edit:hover {
     background-color: #03ecb4;
   }
-  .btn-red:hover {
+  .btn-delete:hover {
     background-color: #f03c67;
   }
 }

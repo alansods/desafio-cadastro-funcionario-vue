@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container">
+  <div class="card-container" @click="handleClick">
     <div class="div">
       <div class="card-title">{{ funcionario.nome }}</div>
       <div class="card-job">{{ funcionario.cargo }}</div>
@@ -12,7 +12,12 @@
 
 <script>
 export default {
-  props: ["funcionario"],
+  props: ["funcionario", "index"],
+  methods: {
+    handleClick() {
+      this.$router.push(`/funcionario/${this.index}`);
+    },
+  }
 };
 </script>
 
