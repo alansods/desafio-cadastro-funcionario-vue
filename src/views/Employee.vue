@@ -313,4 +313,20 @@ input::placeholder {
     background-color: #f03c67;
   }
 }
+
+@media (max-width: 600px) {
+  .btn-edit {
+    background-color: #03ecb4;
+    width: 100px;
+  }
+  .btn-delete {
+    background-color: #f03c67;
+    width: 100px;
+  }
+
+  .btn-edit img,.btn-delete img{
+    display: none;
+  }
+  
+}
 </style>
