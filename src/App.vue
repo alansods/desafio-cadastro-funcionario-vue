@@ -21,7 +21,11 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
 
+a,
+a:link {
+  color: #333;
 }
 
 body {
@@ -52,6 +56,12 @@ h1 {
   font-weight: 700;
 }
 
+@media (max-width: 600px) {
+  #app {
+    font-size: 1.2rem;
+  }
+}
+
 #app {
   width: 700px;
   margin: 30px;
@@ -63,7 +73,6 @@ h1 {
     margin-top: 15px;
   }
 }
-
 
 /* TRANSITIONS */
 .v-enter,
