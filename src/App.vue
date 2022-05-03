@@ -23,11 +23,6 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 
-a,
-a:link {
-  color: #333;
-}
-
 body {
   background-color: #eee;
   width: 100%;
@@ -45,7 +40,7 @@ h1 {
   font-weight: 700;
 }
 
-.btn-back {
+.btn-back, .btn-back a {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -54,6 +49,11 @@ h1 {
   border: none;
   font-size: 1.5rem;
   font-weight: 700;
+  color: #333;
+}
+
+a {
+  color: #333;
 }
 
 @media (max-width: 600px) {
