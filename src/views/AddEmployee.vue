@@ -97,11 +97,7 @@
         <div>
           <label for="uf">UF:</label>
           <select name="uf" v-model="novosDados.uf">
-            <option
-              id="ufEstado"
-              v-for="estado in estados"
-              :key="estado.id"
-            >
+            <option id="ufEstado" v-for="estado in estados" :key="estado.id">
               {{ estado.sigla }}
             </option>
           </select>
@@ -216,7 +212,7 @@ export default {
         email: "",
         uf: "",
         cidade: "",
-        cep:"",
+        cep: "",
         endereco: "",
         numero: "",
         complemento: "",
@@ -245,7 +241,7 @@ export default {
       });
   },
   watch: {
-    'novosDados.uf'() {
+    "novosDados.uf"() {
       this.inativo = true;
       axios
         .get(

@@ -6,13 +6,35 @@
         Voltar
       </button>
       <div class="btn-container">
-        <button class="btn-edit" @click="handleAddEmployee">
+        <button
+          v-if="!isEditable"
+          class="btn-edit"
+          @click="isEditable = !isEditable"
+        >
           <img src="icon-edit.svg" alt="editar" />
           Editar
         </button>
-        <button class="btn-delete" @click="handleRemoveEmployee">
+        <button
+          v-if="isEditable"
+          class="btn-edit"
+          @click="isEditable = !isEditable"
+        >
+          Confirmar
+        </button>
+        <button
+          v-if="!isEditable"
+          class="btn-delete"
+          @click="handleRemoveEmployee"
+        >
           <img src="icon-trash.svg" alt="deletar" />
           Deletar
+        </button>
+        <button
+          v-if="isEditable"
+          class="btn-delete"
+          @click="isEditable = !isEditable"
+        >
+          Cancelar
         </button>
       </div>
     </div>
@@ -26,77 +48,207 @@
       <form>
         <div>
           <label for="codigo">Código:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].codigo }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].codigo }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].codigo"
+            type="text"
+          />
         </div>
         <div>
           <label for="cpf">CPF:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].cpf }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].cpf }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].cpf"
+            type="text"
+          />
         </div>
         <div>
           <label for="nome">Nome:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].nome }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].nome }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].nome"
+            type="text"
+          />
         </div>
         <div>
           <label for="rg">RG:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].rg }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].rg }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].rg"
+            type="text"
+          />
         </div>
         <div>
           <label for="date">Data de Nascimento:</label>
-          <p>
+          <p v-if="!isEditable">
             {{
               $store.state.funcionarios[$route.params.index].data_de_nascimento
             }}
           </p>
+          <input
+            v-if="isEditable"
+            v-model="
+              $store.state.funcionarios[$route.params.index].data_de_nascimento
+            "
+            type="date"
+          />
         </div>
         <div>
           <label for="telefone">Telefone:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].telefone }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].telefone }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].telefone"
+            type="text"
+          />
         </div>
         <div>
           <label for="celular">Celular:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].celular }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].celular }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].celular"
+            type="text"
+          />
         </div>
         <div>
           <label for="email">E-mail:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].email }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].email }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].email"
+            type="text"
+          />
         </div>
         <div>
           <label for="uf">UF:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].uf }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].uf }}
+          </p>
+          <select
+            v-if="isEditable"
+            name="uf"
+            v-model="$store.state.funcionarios[$route.params.index].uf"
+          >
+            <option id="ufEstado" v-for="estado in estados" :key="estado.id">
+              {{ estado.sigla }}
+            </option>
+          </select>
         </div>
         <div>
           <label for="cidade">Cidade:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].cidade }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].cidade }}
+          </p>
+          <div v-if="isEditable">
+            <select v-if="inativo">
+              <option value=""></option>
+            </select>
+            <select
+              v-if="!inativo"
+              name="uf"
+              v-model="$store.state.funcionarios[$route.params.index].cidade"
+            >
+              <option v-for="cidade in cidades" :key="cidade.id">
+                {{ cidade.nome }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <label for="cep">CEP:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].cep }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].cep }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].cep"
+            type="text"
+          />
         </div>
         <div>
           <label for="endereco">Endereço:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].endereco }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].endereco }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].endereco"
+            type="text"
+          />
         </div>
         <div>
           <label for="numero">Número:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].numero }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].numero }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].numero"
+            type="text"
+          />
         </div>
         <div>
           <label for="complemento">Complemento:</label>
-          <p>
+          <p v-if="!isEditable">
             {{ $store.state.funcionarios[$route.params.index].complemento }}
           </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].complemento"
+            type="text"
+          />
         </div>
         <div>
           <label for="bairro">Bairro:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].bairro }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].bairro }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].bairro"
+            type="text"
+          />
         </div>
         <div>
           <label for="cargo">Cargo:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].cargo }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].cargo }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].cargo"
+            type="text"
+          />
         </div>
         <div>
           <label for="salario">Salário:</label>
-          <p>{{ $store.state.funcionarios[$route.params.index].salario }}</p>
+          <p v-if="!isEditable">
+            {{ $store.state.funcionarios[$route.params.index].salario }}
+          </p>
+          <input
+            v-if="isEditable"
+            v-model="$store.state.funcionarios[$route.params.index].salario"
+            type="text"
+          />
         </div>
       </form>
     </div>
@@ -109,21 +261,11 @@ import axios from "axios";
 export default {
   data() {
     return {
+      isEditable: false,
       selectedUf: "",
       inativo: true,
-      novosDados: {
-        id: null,
-        codigo: "",
-        nome: "",
-        cpf: "",
-        rg: "",
-        data_de_nascimento: "",
-        telefone: "",
-        celular: "",
-        cargo: "",
-        estados: [],
-        cidades: [],
-      },
+      estados: [],
+      cidades: [],
     };
   },
   methods: {
@@ -131,8 +273,14 @@ export default {
       this.$router.push("/");
     },
     handleRemoveEmployee() {
-      this.$store.commit("removeEmployee", this.$store.state.funcionarios[this.$route.params.index].id);
+      this.$store.commit(
+        "removeEmployee",
+        this.$store.state.funcionarios[this.$route.params.index].id
+      );
       this.$router.push("/");
+    },
+    handleEditEmployee() {
+      this.isEditable = true;
     },
   },
   mounted() {
@@ -141,18 +289,23 @@ export default {
         "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
       )
       .then((response) => {
-        this.novosDados.estados = response.data;
+        this.estados = response.data;
       });
   },
+  computed: {
+    selectedUF: function() {
+      return this.$store.state.funcionarios[this.$route.params.index].uf
+    }
+  },
   watch: {
-    selectedUf() {
+    selectedUF() {
       this.inativo = true;
       axios
         .get(
-          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUf}/municipios`
+          `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.selectedUF}/municipios`
         )
         .then((response) => {
-          this.novosDados.cidades = response.data;
+          this.cidades = response.data;
           this.inativo = false;
         });
     },
@@ -324,9 +477,17 @@ input::placeholder {
     width: 100px;
   }
 
-  .btn-edit img,.btn-delete img{
+  .btn-edit img,
+  .btn-delete img {
     display: none;
   }
-  
+}
+
+div p {
+  font-weight: 200;
+}
+
+label {
+  font-size: 1.02rem;
 }
 </style>
