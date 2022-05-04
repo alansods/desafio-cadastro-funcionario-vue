@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Buscar funcionários..." />
+      <input v-model="search" type="text" placeholder="Buscar funcionários..." />
       <img src="icon-search.svg" alt="pesquisar" />
     </div>
     <div v-if="$store.state.funcionarios.length === 0" class="no-employees">
@@ -20,7 +20,7 @@
     </div>
     <Card
       v-else
-      v-for="(funcionario, index) in $store.state.funcionarios"
+      v-for="(funcionario, index) in filteredEmployees"
       :key="funcionario.id"
       :funcionario="funcionario"
       :index="index"
@@ -34,6 +34,18 @@ import Card from "@/components/Card.vue";
 export default {
   props: ["funcionarios"],
   components: { Card },
+  data() {
+    return {
+      search: "",
+    }
+  },
+  computed: {
+    filteredEmployees: function() {
+      return this.$store.state.funcionarios.filter((funcionario) => {
+        return funcionario.nome.toLowerCase().startsWith(this.search.toLowerCase());
+      })
+    }
+  },
   methods: {
     handleAddEmployee() {
       this.$router.push({ path: "/adicionar-funcionario" });

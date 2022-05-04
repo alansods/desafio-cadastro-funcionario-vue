@@ -293,9 +293,9 @@ export default {
       });
   },
   computed: {
-    selectedUF: function() {
-      return this.$store.state.funcionarios[this.$route.params.index].uf
-    }
+    selectedUF: function () {
+      return this.$store.state.funcionarios[this.$route.params.index].uf;
+    },
   },
   watch: {
     selectedUF() {
@@ -402,6 +402,12 @@ input::placeholder {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .header-title img {
+    display: none;
+  }
 }
 
 .header-title h2 {
