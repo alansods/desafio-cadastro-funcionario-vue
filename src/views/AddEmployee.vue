@@ -259,6 +259,11 @@ export default {
 <style scoped>
 .header {
   margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  width: 700px;
+  background: #eee;
+  padding: 40px 0 20px 0;
 }
 
 hr {
@@ -348,7 +353,7 @@ input::placeholder {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 60px 0 10px 0;
   padding: 40px 50px;
   border-radius: 4px;
 }
