@@ -59,7 +59,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 .header-title {

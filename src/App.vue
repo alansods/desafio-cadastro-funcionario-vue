@@ -64,12 +64,12 @@ a {
 
 #app {
   width: 700px;
-  margin: 30px;
+  margin: 30px 0;
 }
 
 @media (max-width: 600px) {
   #app {
-    width: 90vw;
+    width: 90%;
     margin-top: 15px;
   }
 }

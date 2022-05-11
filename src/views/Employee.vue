@@ -320,9 +320,16 @@ export default {
   align-items: center;
   position: fixed;
   top: 0px;
-  width: 700px;
+  width: 100%;
   background: #eee;
   padding: 40px 0 20px 0;
+}
+
+@media (max-width: 600px) {
+  .header {
+    width: 90%;
+    padding: 30px 0 20px 0;
+  }
 }
 
 hr {

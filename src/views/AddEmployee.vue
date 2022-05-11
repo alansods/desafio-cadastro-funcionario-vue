@@ -266,6 +266,13 @@ export default {
   padding: 40px 0 20px 0;
 }
 
+@media (max-width: 600px) {
+  .header {
+    width: 90%;
+    padding: 30px 0 20px 0;
+  }
+}
+
 hr {
   margin: 16px 0 40px 0;
   border-top: solid 1px #ccc;
