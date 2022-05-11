@@ -320,7 +320,7 @@ export default {
   align-items: center;
   position: fixed;
   top: 0px;
-  width: 100%;
+  width: 700px; 
   background: #eee;
   padding: 40px 0 20px 0;
 }
