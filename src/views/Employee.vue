@@ -261,7 +261,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      funcionario: null,
+      funcionario: {},
       isEditable: false,
       selectedUf: "",
       inativo: true,
