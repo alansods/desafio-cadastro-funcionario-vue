@@ -15,7 +15,7 @@ export default {
   props: ["funcionario", "index"],
   methods: {
     handleClick() {
-      this.$router.push(`/funcionario/${this.index}`);
+      this.$router.push(`/funcionario/${this.funcionario.id}`);
     },
   }
 };

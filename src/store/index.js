@@ -5,7 +5,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    index: 1,
     funcionarios: [
       {
         id: 1,
@@ -28,7 +27,6 @@ export default new Vuex.Store({
         salario: "R$6.000,00",
       },
       {
-        index: 1,
         id: 2,
         codigo: "00022",
         nome: "Bruno Souza Sauro",

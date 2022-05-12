@@ -42,51 +42,51 @@
     <div class="card-container">
       <div class="header-title">
         <img src="icon-user.svg" alt="voltar" />
-        <h2>{{ $store.state.funcionarios[$route.params.index].nome }}</h2>
+        <h2>{{ funcionario.nome }}</h2>
       </div>
       <hr />
       <form>
         <div>
           <label for="codigo">Código:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].codigo }}
+            {{ funcionario.codigo }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].codigo"
+            v-model="funcionario.codigo"
             type="text"
           />
         </div>
         <div>
           <label for="cpf">CPF:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].cpf }}
+            {{ funcionario.cpf }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].cpf"
+            v-model="funcionario.cpf"
             type="text"
           />
         </div>
         <div>
           <label for="nome">Nome:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].nome }}
+            {{ funcionario.nome }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].nome"
+            v-model="funcionario.nome"
             type="text"
           />
         </div>
         <div>
           <label for="rg">RG:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].rg }}
+            {{ funcionario.rg }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].rg"
+            v-model="funcionario.rg"
             type="text"
           />
         </div>
@@ -94,13 +94,13 @@
           <label for="date">Data de Nascimento:</label>
           <p v-if="!isEditable">
             {{
-              $store.state.funcionarios[$route.params.index].data_de_nascimento
+              funcionario.data_de_nascimento
             }}
           </p>
           <input
             v-if="isEditable"
             v-model="
-              $store.state.funcionarios[$route.params.index].data_de_nascimento
+              funcionario.data_de_nascimento
             "
             type="date"
           />
@@ -108,45 +108,45 @@
         <div>
           <label for="telefone">Telefone:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].telefone }}
+            {{ funcionario.telefone }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].telefone"
+            v-model="funcionario.telefone"
             type="text"
           />
         </div>
         <div>
           <label for="celular">Celular:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].celular }}
+            {{ funcionario.celular }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].celular"
+            v-model="funcionario.celular"
             type="text"
           />
         </div>
         <div>
           <label for="email">E-mail:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].email }}
+            {{ funcionario.email }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].email"
+            v-model="funcionario.email"
             type="text"
           />
         </div>
         <div>
           <label for="uf">UF:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].uf }}
+            {{ funcionario.uf }}
           </p>
           <select
             v-if="isEditable"
             name="uf"
-            v-model="$store.state.funcionarios[$route.params.index].uf"
+            v-model="funcionario.uf"
           >
             <option id="ufEstado" v-for="estado in estados" :key="estado.id">
               {{ estado.sigla }}
@@ -156,7 +156,7 @@
         <div>
           <label for="cidade">Cidade:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].cidade }}
+            {{ funcionario.cidade }}
           </p>
           <div v-if="isEditable">
             <select v-if="inativo">
@@ -165,7 +165,7 @@
             <select
               v-if="!inativo"
               name="uf"
-              v-model="$store.state.funcionarios[$route.params.index].cidade"
+              v-model="funcionario.cidade"
             >
               <option v-for="cidade in cidades" :key="cidade.id">
                 {{ cidade.nome }}
@@ -176,77 +176,77 @@
         <div>
           <label for="cep">CEP:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].cep }}
+            {{ funcionario.cep }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].cep"
+            v-model="funcionario.cep"
             type="text"
           />
         </div>
         <div>
           <label for="endereco">Endereço:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].endereco }}
+            {{ funcionario.endereco }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].endereco"
+            v-model="funcionario.endereco"
             type="text"
           />
         </div>
         <div>
           <label for="numero">Número:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].numero }}
+            {{ funcionario.numero }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].numero"
+            v-model="funcionario.numero"
             type="text"
           />
         </div>
         <div>
           <label for="complemento">Complemento:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].complemento }}
+            {{ funcionario.complemento }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].complemento"
+            v-model="funcionario.complemento"
             type="text"
           />
         </div>
         <div>
           <label for="bairro">Bairro:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].bairro }}
+            {{ funcionario.bairro }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].bairro"
+            v-model="funcionario.bairro"
             type="text"
           />
         </div>
         <div>
           <label for="cargo">Cargo:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].cargo }}
+            {{ funcionario.cargo }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].cargo"
+            v-model="funcionario.cargo"
             type="text"
           />
         </div>
         <div>
           <label for="salario">Salário:</label>
           <p v-if="!isEditable">
-            {{ $store.state.funcionarios[$route.params.index].salario }}
+            {{ funcionario.salario }}
           </p>
           <input
             v-if="isEditable"
-            v-model="$store.state.funcionarios[$route.params.index].salario"
+            v-model="funcionario.salario"
             type="text"
           />
         </div>
@@ -261,6 +261,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      funcionario: null,
       isEditable: false,
       selectedUf: "",
       inativo: true,
@@ -284,6 +285,8 @@ export default {
     },
   },
   mounted() {
+    this.funcionario = this.$store.state.funcionarios.find( x => x.id == this.$route.params.id);
+
     axios
       .get(
         "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
