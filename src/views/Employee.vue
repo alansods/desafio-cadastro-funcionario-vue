@@ -276,7 +276,7 @@ export default {
     handleRemoveEmployee() {
       this.$store.commit(
         "removeEmployee",
-        this.$store.state.funcionarios[this.$route.params.index].id
+        this.funcionario.id
       );
       this.$router.push("/");
     },
@@ -297,7 +297,7 @@ export default {
   },
   computed: {
     selectedUF: function () {
-      return this.$store.state.funcionarios[this.$route.params.index].uf;
+      return this.funcionario.uf;
     },
   },
   watch: {
