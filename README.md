@@ -1,9 +1,9 @@
 # Cadastro de Funcionários
 
 ## Live Preview
-```
-<a href="[https://ebay-clone-web3.vercel.app/](https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/)">https://ebay-clone-web3.vercel.app/](https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/</a>
-```
+
+<a href="https://ebay-clone-web3.vercel.app/">View Demo</a>
+
 
 ## Prototype
 ```
