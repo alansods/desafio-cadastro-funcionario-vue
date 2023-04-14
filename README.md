@@ -2,7 +2,7 @@
 
 ## Live Preview
 
-<a href="https://ebay-clone-web3.vercel.app/">View Demo</a>
+<a href="https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/">[View Demo](https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/)</a>
 
 
 ## Prototype
