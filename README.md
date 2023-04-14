@@ -2,7 +2,7 @@
 
 ## Live Preview
 ```
-[(https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/)]
+<a href="[https://ebay-clone-web3.vercel.app/](https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/)">https://ebay-clone-web3.vercel.app/](https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/</a>
 ```
 
 ## Prototype
