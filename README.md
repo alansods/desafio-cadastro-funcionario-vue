@@ -2,7 +2,7 @@
 
 ## Live Preview
 
-<a href="https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/">(https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/)</a>
+<a target="_blank" href="https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/">https://desafio-cadastro-funcionario-628wuyo5w-alansods.vercel.app/#/</a>
 
 
 ## Prototype
